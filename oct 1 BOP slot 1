@@ -1,0 +1,126 @@
+Result of division ( Contest )
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        long a = sc.nextLong();
+        long b = sc.nextLong();
+
+        if(b%a==0){
+            System.out.println("integer");
+        }else{
+            System.out.println("double");
+        }
+    }
+}
+
+
+
+Mario and Bullet (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int i = 1; i<=T; i++){
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+            int z = sc.nextInt();
+            System.out.println(time(x, y, z));
+        }
+    }
+
+    public static int time(int x, int y , int z){
+        int timehit = y / x;
+        int result = z - timehit;
+        if(result < 0){
+            return 0;
+        }else{
+            return result;
+        }
+    }
+}
+
+
+
+Digit's place (contest)
+class Solution {
+    public char solve(int y) {
+        int lastCharacter = y % 10;
+        
+        if (lastCharacter == 0 || lastCharacter == 2) {
+            return 'o';
+        } else if (lastCharacter == 1 || lastCharacter == 3 || lastCharacter == 5 || lastCharacter == 9) {
+            return 'e';
+        } else if (lastCharacter == 4) {
+            return 'r';
+        } else if (lastCharacter == 6) {
+            return 'x';
+        } else if (lastCharacter == 7) {
+            return 'n';
+        } else {
+            return 't';
+        }
+    }
+}
+
+
+
+Character (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc =new Scanner(System.in);
+        char chare = sc.next().charAt(0);
+
+        if(Character.isDigit(chare)){
+            System.out.println("Digit");
+        }else if(Character.isLetter(chare)){
+            System.out.println("Alphabet");
+        }else{
+            System.out.println("Special Character");
+        }
+    }
+}
+
+
+
+Total Rent
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int K = sc.nextInt();
+        int M = sc.nextInt();
+        int X = sc.nextInt();
+
+        int totalRent = 0;
+        if( X<=20){
+            totalRent = K * X;
+            System.out.println(totalRent);
+        }else{
+            totalRent = K * 20 + M *(X -20);
+            System.out.println(totalRent);
+        }
+    }
+}
