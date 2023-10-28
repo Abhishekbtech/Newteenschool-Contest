@@ -1,0 +1,139 @@
+Newton's Phone
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int i=1; i<=T; i++){
+            int X = sc.nextInt();
+            if(X >= 80){
+                System.out.println("Yes");
+            }else{
+                System.out.println("No");
+            }
+        }
+    }
+}
+
+
+
+The Classical Chase
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int i=1; i<=T; i++){
+            short X = sc.nextShort();
+            short Y = sc.nextShort();
+
+            if(X < Y){
+                System.out.println("Yes");
+            }else{
+                System.out.println("No");
+            }
+        }
+    }
+}
+
+
+
+Resolution
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String n = sc.next();
+        System.out.println(isResolutionPassed(n));
+    }
+
+    public static boolean isResolutionPassed(String votes){
+        int count = 0;
+        for(char vote : votes.toCharArray()){
+            if(vote == '1'){
+                count++;
+            }
+        }
+        return count >= votes.length() / 2;
+    }
+}
+
+
+
+Quadrant 
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+
+        if(x > 0 && y > 0){
+            System.out.println("First quadrant");
+        }else if( x < 0 && y > 0){
+            System.out.println("Second quadrant");
+        }else if(x < 0 && y < 0){
+            System.out.println("Third quadrant");
+        }else if(x > 0 && y < 0){
+            System.out.println("Fourth quadrant");
+        }else{
+            System.out.println("Origin");
+        }
+    }
+}
+
+
+
+Maximum Odd
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int maxOdd = -1, maxEven = -1;
+        for(int i = 0; i<n; i++){
+            int num = sc.nextInt();
+            if(num%2==0){
+                if(maxEven < num){
+                    maxEven = num;
+                }
+            }else{
+                if(maxOdd<num){
+                    maxOdd = num;
+                }
+            }
+        }
+
+        if(maxOdd!=-1 && maxEven!=-1){
+            System.out.println(maxEven+maxOdd);
+        }else{
+            System.out.println(-1);
+        }
+        
+    }
+}
