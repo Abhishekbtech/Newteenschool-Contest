@@ -1,0 +1,149 @@
+Balanced Number
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int x = scanner.nextInt();
+        int even = 0;
+        int odd = 0;
+
+        while(x>0){
+            int last_digit = x % 10;
+            if(last_digit % 2 == 0){
+                even++;
+            }else{
+                odd++;
+            }
+            x = x / 10;
+        }
+
+        if(even == odd){
+            System.out.print("true");
+        }else{
+            System.out.print("false");
+        }
+    }
+}
+
+
+
+Armstrong numbers
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        for(int i=1; i<= N; i++){
+            if(isArmstrong(i)){
+                System.out.print(i + " ");
+            }
+        }
+    }
+
+    public static boolean isArmstrong(int number){
+        int digits = 0;
+        int temp = number;
+        while(temp > 0){
+            temp = temp / 10;
+            digits++;
+        }
+
+        temp = number;
+        int sum = 0;
+        while(temp > 0){
+            int digit = temp % 10;
+            sum += Math.pow(digit, 3);
+            temp = temp /10;
+        }
+        return sum == number;
+    }
+}
+
+
+
+Good Root (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        if(n % 2 ==0){
+            System.out.print("Yes");
+        }else{
+            System.out.print("No");
+        }
+    }
+}
+
+
+
+Butterfly Pattern
+class Solution {
+   
+    public void butterflyPattern(int N) {
+        // write your code here
+        int i, j;
+        for(i=1; i<=N; i++){
+            for(j=1; j<=i; j++){
+                System.out.print("*");
+            }
+
+            int spaces = 2*(N-i);
+            for(j=1; j<=spaces; j++){
+                System.out.print(" ");
+            }
+
+            for(j=1; j<=i; j++){
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+
+        for(i=N; i>=1; i--){
+            for(j=1; j<=i; j++){
+                System.out.print("*");
+            }
+
+            int spaces = 2*(N-i);
+            for(j=1; j<=spaces; j++){
+                System.out.print(" ");
+            }
+            
+            for(j=1; j<=i; j++){
+                System.out.print("*");
+            }
+
+            System.out.println();
+        }
+    }
+}
+
+
+
+Assess Sign
+public static void printSign(int N) {
+    if(N < 0){
+        System.out.println("The number is negative");
+    } else if(N > 0){
+        System.out.println("The number is positive");
+    } else{
+        System.out.println("The number is zero");
+    }
+}
