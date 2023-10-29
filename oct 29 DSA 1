@@ -1,0 +1,166 @@
+Count ones
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int T = scanner.nextInt();
+        for(int i=0; i<T; i++){
+            int n = scanner.nextInt();
+            int [] arr = new int[n];
+            int count = 0;
+            for(int j =0; j<n; j++){
+                arr[j] =scanner.nextInt();
+                if(arr[j] == 1){
+                    count++;
+                }
+            }
+            System.out.println(count);
+        }
+    }
+}
+
+
+
+3rd Root (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        long x = sc.nextLong();
+        double d = Math.cbrt(x);
+        int a = (int) d;
+        System.out.println(a);
+    }
+}
+
+
+
+Find element in 2D array
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int m = sc.nextInt();
+        int n = sc.nextInt();
+        int q = sc.nextInt();
+        int [][] arr = new int [m][n];
+        for(int i=0; i<m; i++){
+            for(int j=0; j<n; j++){
+                arr[i][j] = sc.nextInt();
+            }
+        }
+
+        for(int a = 0; a<q; a++){
+            int y = sc.nextInt();
+            if(isPresent(arr, y)){
+                System.out.println("Yes");
+            }else{
+                System.out.println("No");
+            }
+        }
+    }
+
+    public static boolean isPresent(int [][] arr, int y){
+        for(int i=0; i<arr.length; i++){
+            for(int j=0; j<arr[0].length; j++){
+                if(arr[i][j] == y){
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}
+
+
+
+Array formation
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int [] arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        Arrays.sort(arr);
+        for(int i=0; i<n-1; i+=2){
+            int temp = arr[i];
+            arr[i] = arr[i+1];
+            arr[i+1] = temp;
+        }
+        for(int i=0; i<n; i++){
+            System.out.print(arr[i] + " ");
+        }
+    }
+
+}
+
+
+
+Count Numbers
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        long N = scanner.nextLong();
+        System.out.println(findNumbers(N));
+    }
+
+    public static int findNumbers(long N){
+        List<Integer> numbers = new ArrayList<>();
+        for(int i=1; i<N; i++){
+            if(containsOnly345(i)){
+                numbers.add(i);
+            }
+        }
+        return numbers.size();
+    }
+
+    public static boolean containsOnly345(int num){
+        int digit3 =0, digit4 = 0, digit5 = 0;
+        while(num>0){
+            int digit = num % 10;
+            if(digit == 3){
+                digit3++;
+            }else if(digit == 4){
+                digit4++;
+            }else if(digit == 5){
+                digit5++;
+            }else{
+                return false;
+            }
+            num /= 10;
+        }
+        return digit3 > 0 && digit4 > 0 && digit5 > 0; 
+    }
+}
+
+
+
