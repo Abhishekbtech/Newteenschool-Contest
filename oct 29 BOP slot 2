@@ -1,0 +1,150 @@
+Maximum Odd
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int odd = -1, even = -1;
+    
+        for(int i=0; i<n; i++){
+            int num = sc.nextInt();
+            if(num % 2 ==0){
+                if(even < num){
+                    even = num;
+                }
+            }else{
+                if(odd < num){
+                    odd = num;
+                }
+            }
+        }
+
+        if(odd != -1 && even != -1){
+            System.out.println(even + odd);
+        }else{
+            System.out.println("-1");
+        }
+
+    }
+}
+
+
+
+Alice and sum (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int sum = 0;
+        for(int i=1; i<=n; i++){
+            if(i%2 ==0){
+                sum -= i;
+            }else{
+                sum += i;
+            }
+        }
+        System.out.println(sum);
+    }
+}
+
+
+
+Abhilash Solving Puzzle (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if(isPositiveNumber(n) && isSumDivibleyBy3(n) && hasOddMiddleDigit(n)){
+            System.out.print("code cracked");
+        }else{
+            System.out.print("better luck next time");
+        }
+    }
+
+    public static boolean isPositiveNumber(int n){
+        return n>0;
+    }
+
+    public static boolean isSumDivibleyBy3(int n){
+        int sum = 0;
+        while(n !=0){
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum % 3 == 0;
+    }
+
+    public static boolean hasOddMiddleDigit(int n){
+        int absN = Math.abs(n);
+        int middle = (absN / 10)%10;
+        return middle % 2 != 0;
+    }
+}
+
+
+
+Airlines (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int numberOfAirlines = 10;
+        int airplanceCapacity = sc.nextInt();
+        int numberOfPassengers = sc.nextInt();
+        int ticketPrice = sc.nextInt();
+
+        int numberOfSeats = numberOfAirlines * airplanceCapacity;
+        int result = numberOfSeats >= numberOfPassengers ? numberOfPassengers * ticketPrice : numberOfSeats * ticketPrice;
+        System.out.println(result);
+    }
+}
+
+
+
+Amusement Park (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int T = sc.nextInt();
+        for(int i=0; i<T; i++){
+            int u = sc.nextInt();
+            int v = sc.nextInt();
+            int x =sc.nextInt();
+
+            if(x >= u && x < v){
+                System.out.println("YES");
+            }else{
+                System.out.println("NO");
+            }
+        }
+    }
+}
