@@ -1,0 +1,117 @@
+Permutation - 2
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static TreeSet<String> ts = new TreeSet<>();
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String str = sc.nextLine();
+
+        permute(str.toCharArray(), 0, str.length());
+        for(String perm : ts){
+            System.out.print(perm + " ");
+        }
+    }
+
+    public static void permute(char []arr, int l, int r){
+        if(l == (r-1)){
+            ts.add(new String(arr));
+            return;
+        }else{
+            for(int i=l; i<r; i++){
+                swap(arr, l , i);
+                permute(arr, l+1, r);
+                swap(arr, l, i);
+            }
+        }
+    }
+
+    public static void swap(char []arr, int i, int j){
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+}
+
+
+
+The high median paradigm (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        
+        System.out.println(getMed(n, m));
+        
+        
+    }
+
+    public static int getMed(int n, int m){
+        if(n == 1){
+            return m;
+        }else{
+            int maxMedian =(int)Math.ceil((double)(n)/(2.0));
+            maxMedian--;
+            int median = m/(n - maxMedian);
+            return median;
+        }
+
+        
+    }
+}
+
+
+
+Close to Right (Contest)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input: Size of the array and number of queries
+        int n = scanner.nextInt();
+        int q = scanner.nextInt();
+
+        // Input: Array elements
+        int[] array = new int[n];
+        for (int i = 0; i < n; i++) {
+            array[i] = scanner.nextInt();
+        }
+
+        // Input: Queries
+        for (int i = 0; i < q; i++) {
+            int k = scanner.nextInt();
+            System.out.println(smallerElements(array, n, k));
+        }
+    }
+
+    static int smallerElements(int a[], int n, int k){
+        int left = 0, right = n-1;
+        int count = 0;
+        while(left<=right){
+            int mid = (left+right)/2;
+            if(a[mid]<=k){
+                count = mid+1;
+                left = mid+1;
+            }else{
+                right = mid-1;
+            }
+        }
+        return count;
+    }
+
+
+
+}
