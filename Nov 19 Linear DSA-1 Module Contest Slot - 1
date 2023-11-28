@@ -1,0 +1,89 @@
+8 Subarray (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[]arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        int[] xorPrefix = new int[n];
+        xorPrefix[0] = arr[0];
+        for(int i=1; i<n; i++){
+            xorPrefix[i] = xorPrefix[i-1] ^ arr[i];
+        }
+
+        int[] countXOR = new int[8];
+        countXOR[0] = 1;
+        long resylt = 0;
+        
+        for(int i=0; i<n; i++){
+            resylt += countXOR[xorPrefix[i] % 8];
+            countXOR[xorPrefix[i] % 8]++;
+        }
+
+        System.out.println(resylt);
+    }
+}
+
+
+3rd Highest Number
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int []arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        // Arrays.sort(arr, Collections.reverseOrder());
+        // System.out.print(arr[2]);
+        
+        PriorityQueue<Integer> queus = new PriorityQueue<>(Collections.reverseOrder());
+        for(int num : arr){
+            queus.add(num);
+        }
+        queus.poll();
+        queus.poll();
+        System.out.print(queus.peek());
+    }
+}
+
+
+
+Akash's Farewell Party (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int []arr = new int [n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+        
+        Arrays.sort(arr);
+        int minrat = arr[n-k];
+        System.out.println(minrat);
+    }
+}
