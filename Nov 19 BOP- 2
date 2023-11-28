@@ -1,0 +1,111 @@
+Break in two
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int x = sc.nextInt();
+        if(x >= 1 && x % 2 == 1){
+            System.out.print("true");
+        }else{
+            System.out.print("false");
+        }
+    }
+}
+
+
+Additionally non- decreasing (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int []arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        boolean result = isNon(arr);
+        System.out.print(result);
+    }
+
+    public static boolean isNon(int [] sequence){
+        for(int i=1; i<sequence.length; i++){
+            if(sequence[i] < sequence[i-1] + 5){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+Attendance (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        int c = sc.nextInt();
+
+        double att = (double) c / t *100;
+
+        boolean ise = att >= 75;
+
+        System.out.print(ise);
+    }
+}
+
+
+
+Akash's Grades (Contest)
+public static char akashGrade(float marks){
+    if(marks < 0 || marks >100){
+        return 'X';
+    }else if(marks >= 0 && marks <25){
+        return 'F';
+    }else if(marks >=25 && marks<45){
+        return 'E';
+    }else if(marks >=45 && marks<50){
+        return 'D';
+    }else if(marks>=50 && marks <60){
+        return 'C';
+    }else if(marks >= 60 && marks <80){
+        return 'B';
+    }else{
+        return 'A';
+    }
+}
+
+
+Print Palindromic Pattern
+public static void printSymmetricPattern(int N) {
+    int i, j;
+    for(i=1; i<=N; i++){
+        for(j=i; j<N; j++){
+            System.out.print("  ");
+        }
+        for(j=1; j<=i; j++){
+            System.out.print(j +" ");
+        }
+        for(j=i-1; j>=1; j--){
+            System.out.print(j + " ");
+        }
+        System.out.println();
+    }
+}
