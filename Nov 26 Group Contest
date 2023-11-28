@@ -1,0 +1,243 @@
+Extreme Sums (contest)
+class Solution {
+    public long[] solve(int N, int[] A) {
+        Arrays.sort(A);
+        long[] B = new long[N];
+        for (int i = 0; i < N; i++) {
+            B[i] = (long) A[N - 1 - i] + A[i];
+        }
+
+        return B;
+    }
+}
+
+
+Find difference (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+import java.util.Arrays;
+
+
+ class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int result = findDifference(arr);
+        System.out.println(result);
+    }
+
+    public static int findDifference(int[] arr) {
+        Arrays.sort(arr);
+        int median = arr[arr.length / 2];
+        int maxElement = arr[arr.length - 1];
+        int difference = maxElement - median;
+
+        return difference;
+    }
+}
+
+
+
+Natural Game (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner S = new Scanner(System.in);
+        long n = S.nextLong();
+        long k = S.nextLong();
+        long oddNoCount = (n + 1) / 2;
+        if (k <= oddNoCount) {
+            System.out.println((2 * k) - 1);
+        } else {
+            k = k - oddNoCount;
+            System.out.println(2 * k);
+        }
+    }
+}
+
+
+Queue Challenge (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+
+
+ class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int x = scanner.nextInt();
+        int y = scanner.nextInt();
+        int positions = calculatePositions(N, x, y);
+        System.out.println(positions);
+    }
+
+    public static int calculatePositions(int N, int x, int y) {
+        int positions = N - Math.max(x + 1, N - y) + 1;
+        return positions;
+    }
+}
+
+
+
+Shopping
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+         Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(), k = sc.nextInt();
+        long f = 0;
+        int arr[] = new int[n];
+        for(int i = 0; i < n; i++) arr[i] = sc.nextInt();
+        quickSort(arr, 0, n-1);
+        for(int i = 2; i < k + 2; i++) f += arr[i];
+		System.out.print(f);
+
+	}
+    public static int partitionIndex(int[] arr, int pivot, int l, int r) {
+        int i = l;
+        int j = l;
+        while (i <= r) {
+            if (arr[i] <= pivot) {
+                swap(arr, i, j);
+                i++;
+                j++;
+            } else {
+                i++;
+            }
+        }
+        return j - 1;
+    }
+    public static void swap(int[] arr, int i, int j) {
+        int temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    public static void quickSort(int[] arr, int l, int r) {
+        if (l >= r) return;
+        int pivot = arr[r];
+        int pi = partitionIndex(arr, pivot, l, r);
+        quickSort(arr, l, pi - 1);
+        quickSort(arr, pi + 1, r);
+    }
+}
+
+
+
+Even substrings (contest)
+class Solution {
+    public long solve(String S) {
+
+        char[] ch = new char[S.length()];
+        char []arr = new char[S.length()];
+ 
+        for (int i = 0; i < S.length(); i++) {
+            ch[i] = S.charAt(i);
+        }
+        int x=0;
+        for (int i = 0; i < S.length(); i++) {
+            if(ch[i] %2!=0){
+                arr[x] = ch[i];
+                x++;
+            }
+        }
+
+        for (int i = 0; i < S.length(); i++) {
+            if(ch[i]%2==0){
+                arr[x] = ch[i];
+                x++;
+            }
+        }
+        
+        String string = new String(arr);  
+        int len = string.length();
+        int count = 0;
+     
+        for (int i = 0; i < len; i++)
+        {
+            int temp = string.charAt(i) - '0';
+     
+            if (temp % 2 == 0)
+                count += (i + 1);
+        }
+     
+        return count;
+       
+    }
+}
+
+
+
+Lowest sum (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+import java.util.Arrays;
+
+
+ class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int x = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        int result = minimumSum(arr, x);
+        System.out.println(result);
+    }
+
+    public static int minimumSum(int[] arr, int x) {
+        Arrays.sort(arr);
+        int sum = 0;
+        for (int i = 0; i < x; i++) {
+            sum += arr[i];
+        }
+        return sum;
+    }
+}
+
+
+
+Yash's Marks (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int T = scanner.nextInt();
+        for (int i = 0; i < T; i++) {
+            int X = scanner.nextInt();
+            int N = scanner.nextInt();
+            int points = (X / 10) * N;
+            System.out.println(points);
+        }
+    }
+}
