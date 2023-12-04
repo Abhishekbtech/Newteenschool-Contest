@@ -1,0 +1,110 @@
+Sum of series
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int sum = 0;
+        for(int i=1; i<=N; i++){
+            int innersum = 0;
+            for(int j=1; j<=i; j++){
+                innersum += j;
+            }
+            sum += i * innersum;
+        }
+
+        System.out.println(sum);
+    }
+}
+
+
+
+Make AP (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int A = sc.nextInt();
+        int C = sc.nextInt();
+        System.out.println(findB(A, C));
+    }
+
+    public static int findB(int A, int C){
+        int b = (A+C)/2;
+        if(A <= b && b <= C && (A+ C) % 2 == 0){
+            return b;
+        }
+        return -1;
+    }
+}
+
+
+
+Grade description (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String grade = sc.nextLine().toUpperCase();
+        System.out.println(gradeDescription(grade));
+    }
+
+    public static String gradeDescription(String grade){
+        switch(grade){
+            case "A+":
+                return "outstanding";
+            case "A":
+                return "excellent";
+            case "B+":
+                return "very good";
+            case "B":
+                return "good";
+            case "C+" :
+                return "fair";
+            case "C" :
+                return "satisfactory";
+            case "D" :
+                return "needs improvement";
+            case "F" :
+                return "fail";
+            default :
+                return "Invaild grade";
+        }
+    }
+}
+
+
+
+WTC Finals
+public int chase(int X, int Y) {
+    // Write your code here
+    int run = (X-Y);
+    return run;
+}
+
+
+
+Print Square Pattern
+public static void printStarSquare(int N) {
+    for(int i=0; i<N; i++){
+        for(int j=0; j<N; j++){
+            System.out.print("*");
+        }
+        System.out.println();
+    }
+}
