@@ -1,0 +1,107 @@
+Conditional Problem
+  import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc= new Scanner(System.in);
+        char letter = sc.next().charAt(0);
+
+        switch(letter){
+            case 'A':
+                System.out.println("I am the first letter");
+                break;
+            case 'B':
+                System.out.println("I am the second letter");
+                break;
+            case 'C':
+                System.out.println("I am the third letter");
+                break;
+            case 'D':
+                System.out.println("I am the fourth letter");
+                break;
+            case 'E':
+                System.out.println("I am the fifth letter");
+                break;
+            default:
+                System.out.println("I don't belong here");
+                break;
+        }
+    }
+}
+
+
+Wedding Destination
+  public int maxArrangements(int X, int Y, int A) {
+    // Write your code here
+    int max = 4 * X + 8 * Y;
+    if(max < A){
+        return (A-max);
+    }
+    return 0;
+}
+
+
+Is possible? (Contest)
+  import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        // int N = scanner.nextInt();
+        int[] lengths = new int[3];
+        for (int i = 0; i < 3; i++) {
+            lengths[i] = scanner.nextInt();
+        }
+        System.out.println(isPo(lengths));
+    }
+
+    public static boolean isPo(int []lengths){
+        Arrays.sort(lengths);
+        for(int i=0; i<lengths.length-1; i++){
+            if(lengths[i] == lengths[i+1]){
+                return false;
+            }
+        }
+
+        return true;
+    }
+}
+
+
+Continent (Contest)
+  import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        String s = sc.next();
+        switch(s){
+            case "Asia":
+                System.out.println("It is the largest continent");
+                break;
+            case "Australia":
+                System.out.println("It is the smallest continent");
+                break;
+            case "Africa" :
+                System.out.println("It is the hottest continent");
+                break;
+            case "Antarctica" :
+                System.out.println("It is the coldest continent");
+                break;
+            default:
+                System.out.println("Unknown Continent type");
+        }
+    }
+}
