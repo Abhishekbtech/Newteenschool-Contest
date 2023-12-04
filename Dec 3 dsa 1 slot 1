@@ -1,0 +1,120 @@
+Sara and Monsters (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int []arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        int coint = 0;
+        int ans = 0;
+        int i=0;
+        while(true){
+            if(arr[i] - coint <= 0){
+                ans = i+1;
+                break;
+            }
+            coint++;
+            i++;
+            i = i % n;
+        }
+        System.out.println(ans);
+        
+    }
+}
+
+
+Sequence Formation (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int[] arr = new int[N];
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        long sum = 0;
+        for(int i=0; i<N; i++){
+            sum = sum + Math.abs(arr[i]);
+        }
+        System.out.println(sum);
+    }
+}
+
+
+Min Max Difference (Contest)
+class Solution {
+    public int smallestRangeI(int[] A, int K) {
+    // enter your code here
+        int min = A[0];
+        int max = A[0];
+        for(int num : A){
+            min = Math.min(min, num);
+            max = Math.max(max, num);
+        }
+
+        int ans =(max - K) - (min + K);
+        if(ans < 0){
+            return 0;
+        }
+        return ans;
+    }
+}
+
+
+Greater tastiness (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int k = sc.nextInt();
+        int []arr = new int[n];
+        for(int i=0; i<n; i++){
+            arr[i] = sc.nextInt();
+        }
+
+        System.out.print(conuntCh(arr, k));
+    }
+
+    public static int conuntCh(int[] a, int k){
+        int n = a.length;
+        // if(a[n-1] <= k){
+        //     return n;
+        // }
+
+        int low =0;
+        int hight = n-1;
+        int count = 0;
+        while(low <= hight){
+            int mid = low + (hight -low)/2;
+            if(a[mid] > k){
+                count += (hight - mid + 1);
+                hight = mid -1;
+            }else{
+                low = mid + 1;
+            }
+        }
+        return count;
+    }
+}
