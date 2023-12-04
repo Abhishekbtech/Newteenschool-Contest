@@ -1,0 +1,11 @@
+Right Sum (Contest)
+public static int rightCount(Node node) {
+    // your code
+    int sum = 0;
+    Node current = node.next;
+    while(current != null){
+        sum += current.val;
+        current = current.next;
+    }
+    return sum;
+}
