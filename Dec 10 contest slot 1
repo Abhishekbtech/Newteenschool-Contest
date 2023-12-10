@@ -1,0 +1,110 @@
+Triple Prime (contest)
+class Solution {
+    public static String solve(long N) {
+        int count = 0;
+        for(int i =1; i<=Math.sqrt(N); i++){
+            if(N % i == 0){
+                count++;
+            
+                if(N / i != i){
+                    count++;
+                }
+            }
+            if(count > 3){
+                return "No";
+            }
+        }
+
+        if(count == 3){
+            return "Yes";
+        }else{
+            return "No";
+        }
+    }
+}
+
+
+
+Circle
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Circle c = new Circle(n);
+        System.out.println(c.computeArea());
+        System.out.println(c.computezcircumference());
+    }
+}
+
+class Circle{
+    private double radius;
+    double pi = 3.14;
+
+    public Circle(double radius){
+        this.radius = radius;
+    }
+
+    public double computeArea(){
+        return pi * Math.pow(radius, 2);
+    }
+
+    public double computezcircumference(){
+        return 2 * pi * radius;
+    }
+}
+
+
+
+Find F(1) (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+
+    static final int M = 1000000007;
+
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        long n = sc.nextLong();
+        long f = sc.nextLong();
+        System.out.println(findc(n,f));
+    }
+
+    public static long power(long x, long n){
+        long res = 1;
+        while(n>0){
+            if(n%2 == 1){
+                res = (res * x) % M;
+            }
+
+            x = (x * x) % M;
+
+            n = n >> 1;
+        }
+        return res;
+    }
+
+    public static long modulo(long x){
+        return power(x, M - 2);
+    }
+
+    public static long findc(long n, long f){
+        long p = power(2, n-1);
+        long modInv = modulo(p);
+
+        long res ;
+
+        res = ((modInv % M) * f % M) % M;
+
+        return res;
+    }
+}
