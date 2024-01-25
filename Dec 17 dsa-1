@@ -1,0 +1,192 @@
+MaxFlags
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int i=0; i<t; i++){
+            int n = sc.nextInt();
+            int m = sc.nextInt();
+            int []flags = new int[n];
+
+            for(int j=0; j<m; j++){
+                int oper = sc.nextInt();
+                if(oper <= n){
+                    increaseFlag(flags, oper-1);
+                }else{
+                    maxFlag(flags);
+                }
+            }
+
+            for(int flag : flags){
+                System.out.print(flag +" ");
+            }
+            System.out.println();
+        }
+    }
+
+    public static void increaseFlag(int []flags, int index){
+        flags[index]++;
+    }
+
+    public static void maxFlag(int[] flags){
+        int max = 0;
+        for(int flag : flags){
+            if(flag > max){
+                max = flag;
+            }
+        }
+
+        for(int i=0; i< flags.length; i++){
+            flags[i] = max;
+        }
+    }
+}
+
+
+Max Score in Quiz (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+        int[][] results = new int[n][m];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                results[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println(maxMarks(results));
+    }
+
+    public static int maxMarks(int[][] results) {
+        int maxMarks = 0;
+        int totalCorrect = 0;
+        int totalQuestions = results[0].length;
+
+        for (int i = 0; i < results.length; i++) {
+            totalCorrect = 0;
+            for (int j = 0; j < results[i].length; j++) {
+                totalCorrect += results[i][j];
+            }
+            maxMarks = Math.max(maxMarks, totalCorrect * 10);
+        }
+
+        return maxMarks;
+    }
+}
+
+
+Candy Crush
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        for(int testcase=0;testcase<t;testcase++){
+            long n = sc.nextInt();
+            long cost = 0;
+            while(n!=0){
+                long groups = n/3;
+                if(n%3!=0){
+                    groups++;
+                }
+                cost += (groups * groups);
+                n = n - groups;
+            }
+            System.out.println(cost);
+        }
+    }
+}
+
+
+Fast Search (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        Arrays.sort(arr);
+        int k = scanner.nextInt();
+        for (int i = 0; i < k; i++) {
+            int l = scanner.nextInt();
+            int r = scanner.nextInt();
+
+            int count = countNumbersInRange(arr, l, r);
+            System.out.print(count + " ");
+        }
+    }
+
+    public static int countNumbersInRange(int[] arr, int l, int r) {
+        int leftIndex = firstOccurrence(arr, l);
+        int rightIndex = lastOccurrence(arr, r);
+
+        if (leftIndex == -1 || rightIndex == -1) {
+            return 0;
+        }
+
+        return rightIndex - leftIndex + 1;
+    }
+
+    public static int firstOccurrence(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        int result = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] >= target) {
+                result = mid;
+                right = mid - 1;
+            } else {
+                left = mid + 1;
+            }
+        }
+
+        return result;
+    }
+
+    public static int lastOccurrence(int[] arr, int target) {
+        int left = 0;
+        int right = arr.length - 1;
+        int result = -1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (arr[mid] <= target) {
+                result = mid;
+                left = mid + 1;
+            } else {
+                right = mid - 1;
+            }
+        }
+
+        return result;
+    }
+}
