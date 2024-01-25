@@ -1,0 +1,113 @@
+Count Set Nodes
+import java.util.Scanner;
+
+class Node {
+    int data;
+    Node next;
+
+    Node(int data) {
+        this.data = data;
+        this.next = null;
+    }
+}
+
+class LinkedList {
+    Node head;
+
+    LinkedList() {
+        this.head = null;
+    }
+
+    int countOfSetBit(Node head) {
+        int count =0;
+        Node current = head;
+        while(current != null){
+            if((current.data & 1) == 1){
+                count++;
+            }
+            current = current.next;
+        }
+        return count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        LinkedList list = new LinkedList();
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            int data = scanner.nextInt();
+            Node newNode = new Node(data);
+            newNode.next = list.head;
+            list.head = newNode;
+        }
+        int count = list.countOfSetBit(list.head);
+        System.out.println(count);
+    }
+}
+
+
+Nth node from end of linked list
+/*
+// information about the class Node
+class Node
+{
+    int data;
+    Node next;
+    Node(int d) 
+    {
+        data = d; 
+        next = null;
+    }
+}
+*/
+static int getNthFromLast(Node head, int n)
+{
+    // Your code here
+    int length = 0;
+    Node temp = head;
+    while (temp != null) {
+        temp = temp.next;
+        length++;
+    }
+    if (n > length) {
+        throw new IllegalArgumentException("n is larger than the list size.");
+    }
+    temp = head;
+    for (int i = 1; i < length - n + 1; i++) {
+        temp = temp.next;
+    }
+    return temp.data;
+}
+
+
+LinkedList Balance
+// class Node {
+//     int data;
+//     Node next;
+
+//     public Node(int data) {
+//         this.data = data;
+//         this.next = null;
+//     }
+// } 
+
+public static boolean findDifference(Node head) {
+// write your code here
+    if (head == null) {
+        return true;
+    }
+
+    int sum = 0;
+    int count = 0;
+    Node current = head;
+
+    while (current != null) {
+        sum += current.data;
+        count++;
+        current = current.next;
+    }
+
+    return sum % count == 0;
+}
