@@ -1,0 +1,120 @@
+Integer suffix - easy version (contest )
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        String[] strArr = new String[n];
+        for (int i = 0; i < n; i++) {
+            strArr[i] = Integer.toBinaryString(scanner.nextInt());
+        }
+        String x = Integer.toBinaryString(scanner.nextInt());
+        int count = 0;
+        for (String str : strArr) {
+            if (str.endsWith(x)) {
+                count++;
+            }
+        }
+        System.out.println(count);
+    }
+}
+
+
+Strange String
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < n; i++) {
+            char c = (char)('a' + (i % 26));
+            if (i % 2 != 0) {
+                result.append(c);
+            } else {
+                result.insert(0, c);
+            }
+        }
+        System.out.println(result.toString());
+    }
+
+}
+
+
+Loyal Numbers
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int rows = scanner.nextInt();
+        int cols = scanner.nextInt();
+        int[][] matrix = new int[rows][cols];
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                matrix[i][j] = scanner.nextInt();
+            }
+        }
+        int loyalNumber = findLoyalNumber(matrix, rows, cols);
+        System.out.println(loyalNumber == -1 ? "-1" : loyalNumber);
+    }
+
+    private static int findLoyalNumber(int[][] matrix, int rows, int cols) {
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (isLoyal(matrix, i, j, rows, cols)) {
+                    return matrix[i][j];
+                }
+            }
+        }
+        return -1;
+    }
+
+    public static boolean isLoyal(int[][] matrix, int row, int col, int rows, int cols) {
+        int element = matrix[row][col];
+        for (int j = 0; j < cols; j++) {
+            if (matrix[row][j] < element) {
+                return false;
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            if (matrix[i][col] > element) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
+Calculate BMI(Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        double w = sc.nextInt();
+        double h = sc.nextInt();
+
+        System.out.printf("%.2f", calculateBMI(w, h));
+    }
+
+    public static double calculateBMI(double w, double h) {
+        double weightInKg = w * 0.453592;
+        double heightInMeters = h * 0.0254;
+        double bmi = weightInKg / Math.pow(heightInMeters, 2);
+        return Math.round(bmi * 100.0) / 100.0;
+    }
+}
