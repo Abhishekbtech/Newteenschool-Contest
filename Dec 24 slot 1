@@ -1,0 +1,73 @@
+List Extremes
+// class Node {
+//     int data;
+//     Node next;
+
+//     Node(int d) {
+//         data = d;
+//         next = null;
+//     }
+// } 
+public static int findDifference(Node head){
+    //write your code here
+    if(head == null){
+        return 0;
+    }
+    int max = head.data;
+    int min = head.data;
+
+    while(head != null){
+        max = Math.max(max, head.data);
+        min = Math.min(min, head.data);
+        head = head.next;
+    }
+
+    return max-min;
+}
+
+
+Double Elements
+public static void solve(Node head) {
+    HashSet<Integer> set = new HashSet<>();
+        Node current = head;
+
+        while (current != null) {
+            if(set.contains(current.val)){
+                set.remove(current.val);
+            }else{
+                set.add(current.val);
+            }
+            current = current.next;
+        }
+
+        if(set.isEmpty()){
+            System.out.println("Yes");
+        }else{
+            System.out.println("No");
+        } 
+}
+
+
+Delete node without head pointer
+/*
+class Node {
+    Node next;
+    int val;
+
+    Node(int val) {
+        this.val = val;
+        next = null;
+    }
+}
+*/
+
+public static void deleteNode(Node D) {
+//Enter your code here
+        if (D == null || D.next == null) {
+            return;
+        }
+
+        Node nextNode = D.next;
+        D.val = nextNode.val;
+        D.next = nextNode.next;
+}
