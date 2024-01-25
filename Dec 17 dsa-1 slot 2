@@ -1,0 +1,150 @@
+Akash's Contest (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int x = sc.nextInt();
+        int y = sc.nextInt();
+
+        int low =0, high = (int)(1e9);
+        while(low <= high){
+            int time = low + (high - low) / 2;
+            if(possible(x,y,time,n)){
+                high = time - 1;
+            }else{
+                low = time + 1;
+            }
+        }
+        System.out.println(low + Math.min(x,y));
+    }
+
+    public static boolean possible(int x, int y, int time, int n){
+        return(time / x + time /y ) >= n-1;
+    }
+}
+
+
+Count Good Numbers (Contest)
+class Solution {
+    // public int countGoodNumbers(long n) {
+    //     // enter your code here.
+
+    // }
+
+    static final int MODULO = 1000000007;
+
+    public int countGoodNumbers(long n) {
+        long halfN = n / 2;
+        int remainder = (int) (n % 2);
+        long count = myPow(5 * 4, halfN);
+        if (remainder == 1)
+            count *= 5;
+        count %= MODULO;
+        return (int) count;
+    }
+
+    public static long myPow(long x, long n) {
+        long power = 1;
+        while (n > 0) {
+            if (n % 2 == 1)
+                power = power * x % MODULO;
+            x = x * x % MODULO;
+            n /= 2;
+        }
+        return power;
+    }
+}
+
+
+Array Game (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int T = scanner.nextInt();
+        for (int t=0; t<T; t++) {
+            int L = scanner.nextInt();
+            int[] array = new int[L];
+            for (int i = 0; i < L; i++) {
+                array[i] = scanner.nextInt();
+            }
+            Arrays.sort(array);
+            int[] result = rearrangeArray(array);
+            
+            for (int i : result) {
+                System.out.print(i + " ");
+            }
+            System.out.println();
+            
+        }
+    }
+
+
+    static int[] rearrangeArray(int[] array) {
+        int[] result = new int[array.length];
+        int index = 0;
+        
+        for (int i = 0; i < array.length; i += 2) {
+            result[i] = array[index++];
+        }
+        
+        for (int i = 1; i < array.length; i += 2) {
+            result[i] = array[index++];
+        }
+        
+        return result;
+    }
+}
+
+
+Sky- Line(Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int [][] grid = new int[n][n];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<n; j++){
+                grid[i][j] = sc.nextInt();
+            }
+        }
+
+        System.out.println(maxIncreaseKeepingSkyline(grid));
+    }
+
+    public static int maxIncreaseKeepingSkyline(int[][] grid) {
+        int n = grid.length;
+        int[] rowMax = new int[n];
+        int[] colMax = new int[n];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                rowMax[i] = Math.max(rowMax[i], grid[i][j]);
+                colMax[j] = Math.max(colMax[j], grid[i][j]);
+            }
+        }
+
+        int res = 0;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                res += Math.min(rowMax[i], colMax[j]) - grid[i][j];
+            }
+        }
+        return res;
+    }
+}
