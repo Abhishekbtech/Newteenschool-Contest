@@ -1,0 +1,138 @@
+Maximum consecutive with equal set bits (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        int maxCount = 0;
+        int currentCount = 1;
+        for (int i = 1; i < n; i++) {
+            int count1 = countSetBits(arr[i - 1]);
+            int count2 = countSetBits(arr[i]);
+
+            if (count1 == count2) {
+                currentCount++;
+            } else {
+                maxCount = Math.max(maxCount, currentCount);
+                currentCount = 1;
+            }
+        }
+
+        maxCount = Math.max(maxCount, currentCount);
+        System.out.println(maxCount);
+    }
+
+    private static int countSetBits(int num) {
+        int count = 0;
+        while (num > 0) {
+            count += num % 2;
+            num /= 2;
+        }
+        return count;
+    }
+}
+
+
+
+Hungry Students (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        Queue<Character> q = new LinkedList<>();
+        Stack<Character> st = new Stack<>();
+
+        int n = sc.nextInt();
+        char[] arr = new char[n];
+        for(int i=0;i<n;i++){
+            q.add(sc.next().charAt(0));
+        }
+
+        for(int i=0; i<n; i++){
+            arr[i] = sc.next().charAt(0);
+        }
+        for(int i=n-1;i>=0;i--){
+            st.push(arr[i]);
+        }
+
+        while(true) {
+            boolean deleted = false;
+            int size = q.size();
+            for(int i=0;i<size;i++){
+                if(st.peek()==q.peek()){
+                    st.pop();
+                    q.remove();
+                    deleted = true;
+                }else{
+                    char curr = q.remove();
+                    q.add(curr);
+                }
+            }
+            if(!deleted){
+                break;
+            }
+        }
+        System.out.println(st.size());
+    }     
+}
+
+
+kth time (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
+        int[] tickets = new int[n];
+        for (int i = 0; i < n; i++) {
+            tickets[i] = scanner.nextInt();
+        }
+
+        int time = calculatePurchaseTime(n, k-1, tickets);
+        System.out.println(time);
+    }
+
+    private static int calculatePurchaseTime(int n, int k, int[] tickets) {
+        int time =0;
+        while(tickets[k] > 0){
+            for(int i=0; i<n; i++){
+                if(tickets[i] > 0){
+                    if(tickets[i] == 1){
+                        tickets[i] = tickets[i] -1;
+                        time += 2;
+                    }else{
+                        tickets[i] = tickets[i] - 2;
+                        time += 3;
+                    }
+                    
+                    if(tickets[k] == 0){
+                        return time;
+                    }
+                }
+            }
+        }
+
+        return time;
+    }
+}
