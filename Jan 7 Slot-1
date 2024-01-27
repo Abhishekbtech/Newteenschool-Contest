@@ -1,0 +1,127 @@
+Yet Another Counting Problem (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int N = scanner.nextInt();
+        int[] arr = new int[N];
+        
+        for (int i = 0; i < N; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        
+        long count = 0;
+        Map<Integer, Integer> map = new HashMap<>();
+        
+        for (int i = 0; i < N; i++) {
+            int diff = arr[i] - i;
+            if (map.containsKey(diff)) {
+                count += map.get(diff);
+            }
+            map.put(diff, map.getOrDefault(diff, 0) + 1);
+        }
+        
+        System.out.println(count);
+    
+    }
+}
+
+
+Linear Probing in Hashing
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int T = scanner.nextInt();
+        
+        for (int t = 0; t < T; t++) {
+            int hashSize = scanner.nextInt();
+            int sizeOfArray = scanner.nextInt();
+            int[] hashTable = new int[hashSize];
+            Arrays.fill(hashTable, -1);
+            
+            for (int i = 0; i < sizeOfArray; i++) {
+                int element = scanner.nextInt();
+                inst(hashTable, hashSize, element);
+            }
+            
+            for (int i = 0; i < hashSize; i++) {
+                System.out.print(hashTable[i] + " ");
+            }
+            System.out.println();
+        }
+
+    }
+
+    public static void inst(int[] hashTable, int hashSize, int element){
+        int index = element % hashSize;
+
+        while(hashTable[index] != -1){
+            index = (index + 1) % hashSize;
+
+            if(index == element % hashSize){
+                break;
+            }
+        }
+
+        if(hashTable[index] == -1){
+            hashTable[index] = element;
+        }
+    }
+}
+
+
+Highest MEX (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        System.gc();
+        int T = scanner.nextInt();
+        
+        for (int t = 0; t < T; t++) {
+            int N = scanner.nextInt();
+            int K = scanner.nextInt();
+            int[] multiset = new int[N];
+            
+            for (int i = 0; i < N; i++) {
+                multiset[i] = scanner.nextInt();
+            }
+            
+            System.out.println(calculateMex(multiset, K));
+        }
+    }
+    
+    public static int calculateMex(int[] multiset, int K) {
+        Arrays.sort(multiset);
+        
+        int mex = 0;
+        for (int i = 0; i < multiset.length; i++) {
+            if (multiset[i] == mex) {
+                mex++;
+            } else if (multiset[i] > mex && K > 0) {
+                K--;
+                mex++;
+                i--;
+            }
+        }
+        
+        mex += K;
+        return mex;
+    }
+}
