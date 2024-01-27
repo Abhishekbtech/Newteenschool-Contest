@@ -1,0 +1,108 @@
+Boundary Line (Contest)
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] nums = new int[n];
+        for (int i = 0; i < n; i++) {
+            nums[i] = sc.nextInt();
+        }
+        int minimum = sc.nextInt();
+        int maximum = sc.nextInt();
+        
+        System.out.println(countBoundaryLineSubarrays(nums, minimum, maximum));
+    }
+
+    public static int countBoundaryLineSubarrays(int[] nums, int minimum, int maximum) {
+        int count = 0;
+
+        for (int i = 0; i < nums.length; i++) {
+            int minInSubarray = nums[i];
+            int maxInSubarray = nums[i];
+
+            for (int j = i; j < nums.length; j++) {
+                minInSubarray = Math.min(minInSubarray, nums[j]);
+                maxInSubarray = Math.max(maxInSubarray, nums[j]);
+
+                if (minInSubarray == minimum && maxInSubarray == maximum) {
+                    count++;
+                }
+            }
+        }
+
+        return count;
+    }
+}
+
+
+Evaluate Reverse Polish Notation(Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String []tokens = new String[n];
+        for(int i=0; i<n; i++){
+            tokens[i] = sc.next();
+        }
+        System.out.println(evalRPN(tokens));
+    }
+    
+    public static int evalRPN(String[] tokens) {
+        Stack<Integer> stack = new Stack<>();
+
+        for (String token : tokens) {
+            if (token.equals("+")) {
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                stack.push(num1 + num2);
+            } else if (token.equals("-")) {
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                stack.push(num1 - num2);
+            } else if (token.equals("*")) {
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                stack.push(num1 * num2);
+            } else if (token.equals("/")) {
+                int num2 = stack.pop();
+                int num1 = stack.pop();
+                stack.push(num1 / num2);
+            } else {
+                stack.push(Integer.parseInt(token));
+            }
+        }
+
+        return stack.pop();
+    }
+}
+
+
+Larger Node (Contest)
+public static int[] nextLargerNodes(ListNode head) {
+              // your code here
+
+        List<Integer> list = new ArrayList<>();
+        while (head != null) {
+            list.add(head.val);
+            head = head.next;
+        }
+
+        int[] result = new int[list.size()];
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < list.size(); i++) {
+            while (!stack.isEmpty() && list.get(stack.peek()) < list.get(i)) {
+                result[stack.pop()] = list.get(i);
+            }
+            stack.push(i);
+        }
+
+        return result;
+}
