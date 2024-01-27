@@ -1,0 +1,120 @@
+Counting Sort using Map
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void countingSort(int[] arr) {
+        int n = arr.length;
+        int max = 100001;
+        int[] count = new int[max];
+        int[] output = new int[n];
+        for (int i = 0; i < n; i++) {
+            count[arr[i]]++;
+        }
+        for (int i = 1; i < max; i++) {
+            count[i] += count[i - 1];
+        }
+        for (int i = n - 1; i >= 0; i--) {
+            output[count[arr[i]] - 1] = arr[i];
+            count[arr[i]]--;
+        }
+        for (int i = 0; i < n; i++) {
+            arr[i] = output[i];
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) {
+                arr[i] = scanner.nextInt();
+            }
+
+            countingSort(arr);
+            for (int i = 0; i < n; i++) {
+                System.out.print(arr[i] + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+Pair Sum Existence-Revisited
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static int hasSum(int[] arr, int targetSum) {
+        Set<Integer> complementSet = new HashSet<>();
+
+        for (int num : arr) {
+            int complement = targetSum - num;
+            if (complementSet.contains(complement)) {
+                return 1;
+            }
+            complementSet.add(num);
+        }
+        return 0;
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        int targetSum = scanner.nextInt();
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        System.out.println(hasSum(arr, targetSum));
+    }
+}
+
+
+Maximum Frequency Character
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static char findMostFrequentChar(String s) {
+        Map<Character, Integer> charCount = new HashMap<>();
+        int maxCount = 0;
+        for (char c : s.toCharArray()) {
+            int count = charCount.getOrDefault(c, 0) + 1;
+            charCount.put(c, count);
+            maxCount = Math.max(maxCount, count);
+        }
+        int maxCharCount = 0;
+        char mostFrequentChar = ' ';
+
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() == maxCount) {
+                maxCharCount++;
+                mostFrequentChar = entry.getKey();
+            }
+        }
+        return maxCharCount > 1 ? '-' : mostFrequentChar;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String inputString = sc.next();
+        char result = findMostFrequentChar(inputString);
+        if (result == '-') {
+            System.out.println("-1");
+        } else {
+            System.out.println(result);
+        }
+    }
+}
