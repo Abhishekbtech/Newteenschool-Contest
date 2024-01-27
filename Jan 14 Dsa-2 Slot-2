@@ -1,0 +1,65 @@
+Extended XOR (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] arr = new int[n];
+        for(int i=0;i<n;i++){
+            arr[i] = sc.nextInt();
+        }
+        System.out.println(exists(n,arr));
+    }
+    private static boolean exists(int n,int[] arr){
+        int count =0;
+        for(int i=0;i<n;i++){
+            if(arr[i]==1){
+                count++;
+            }
+        }
+        return count %2==0;
+    }
+}
+
+
+Perfect Ratio
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int A = scanner.nextInt();
+        int B = scanner.nextInt();
+        int X = scanner.nextInt();
+        int Y = scanner.nextInt();
+        int K = scanner.nextInt();
+
+        if (isExistPQ(A, B, X, Y, K)) {
+            System.out.println("YES");
+        } else {
+            System.out.println("NO");
+        }
+    }
+
+    private static boolean isExistPQ(int A, int B, int X, int Y, int K) {
+        for (int P = A; P <= B; P++) {
+            for (int Q = X; Q <= Y; Q++) {
+                if (P / Q >= K) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    
+    }
+}
