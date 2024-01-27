@@ -1,0 +1,167 @@
+Maximum row sum (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        int[][] arr = new int[n][m];
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = scanner.nextInt();
+            }
+        }
+
+        int maxRow = -1;
+        int maxSum = Integer.MIN_VALUE;
+        for (int i = 0; i < n; i++) {
+            int rowSum = 0;
+            for (int j = 0; j < m; j++) {
+                rowSum += arr[i][j];
+            }
+            if (rowSum > maxSum) {
+                maxSum = rowSum;
+                maxRow = i;
+            }
+        }
+
+        System.out.println(maxRow);
+    }
+}
+
+
+Building Bar Chart (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+
+        int maxValue = Integer.MIN_VALUE;
+        for (int value : arr) {
+            if (value > maxValue) {
+                maxValue = value;
+            }
+        }
+
+        for (int i = maxValue; i > 0; i--) {
+            for (int j = 0; j < n; j++) {
+                if (arr[j] >= i) {
+                    System.out.print("*\t");
+                } else {
+                    System.out.print("\t");
+                }
+            }
+            System.out.println();
+        }
+    }
+}
+
+
+Lazy Sam (Contest)
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    static boolean canConvert(String A, String B) {
+        int[] countA = new int[2];
+        int[] countB = new int[2];
+
+        int n = A.length();
+
+        for (int i = 0; i < n; i++) {
+            countA[A.charAt(i) - '0']++;
+            countB[B.charAt(i) - '0']++;
+        }
+
+        if (countA[0] != countB[0] || countA[1] != countB[1]) {
+            return false;
+        }
+
+        for (int i = 2; i <= n; i++) {
+            if (n % i == 0) {
+                int len = i;
+                for (int j = 0; j <= n - len; j++) {
+                    if (countA[0] == countB[0] && countA[1] == countB[1]) {
+                        break; 
+                    }
+
+                    int zerosA = countA[0] - countA[0 + len];
+                    int onesA = countA[1] - countA[1 + len];
+                    int zerosB = countB[0] - countB[0 + len];
+                    int onesB = countB[1] - countB[1 + len];
+
+                    if (zerosA == zerosB && onesA == onesB) {
+                        countA[0] = countA[0 + len];
+                        countA[1] = countA[1 + len];
+                        countB[0] = countB[0 + len];
+                        countB[1] = countB[1 + len];
+                    }
+                }
+            }
+        }
+
+        return countA[0] == countB[0] && countA[1] == countB[1];
+    }
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int t = scanner.nextInt();
+        while (t-- > 0) {
+            int n = scanner.nextInt(); 
+            String A = scanner.next();
+            String B = scanner.next();
+
+            if (canConvert(A, B)) {
+                System.out.println("YES");
+            } else {
+                System.out.println("NO");
+            }
+        }
+    }
+}
+
+
+Minimum Non- Zero Product of the Array Elements (Contest)
+class Solution {    
+    static final long MODULO = 1000000007;
+
+    public static int minNonZeroProduct(int p) {
+        long maxNum = (1L << p) - 1;
+        long remain = maxNum - 1;
+        long pairs = remain / 2;
+        long minProduct = quickMul(remain, pairs) * (maxNum % MODULO) % MODULO;
+        return (int) (minProduct % MODULO);
+    }
+
+    public static long quickMul(long x, long n) {
+        x %= MODULO;
+        long power = 1;
+        while (n > 0) {
+            if (n % 2 == 1)
+                power = power * x % MODULO;
+            x = x * x % MODULO;
+            n /= 2;
+        }
+        return power;
+    }
+
+    
+}
+
