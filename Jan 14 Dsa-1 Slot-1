@@ -1,0 +1,80 @@
+Make it Same!
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        scanner.nextLine(); 
+        String a = scanner.nextLine();
+        String b = scanner.nextLine();
+
+        int minCost = calculateMinCost(n, a, b);
+        System.out.println(minCost);
+    }
+
+    private static int calculateMinCost(int n, String a, String b) {
+        int cost = 0;
+
+        for (int i = 0; i < n; i++) {
+            if (a.charAt(i) != b.charAt(i)) {
+                if (i < n - 1 && a.charAt(i) != a.charAt(i + 1) && a.charAt(i + 1) != b.charAt(i + 1)) {
+                    cost++;
+                    i++; 
+                } else {
+                    cost++;
+                }
+            }
+        }
+
+        return cost;
+    }
+}
+
+
+Ram's Logic
+import java.io.*; // for handling input/output
+import java.util.*; // contains Collections framework
+
+// don't change the name of this class
+// you can add inner classes if needed
+class Main {
+    public static void main (String[] args) {
+        // Your code here
+        Scanner scanner = new Scanner(System.in);
+        String A = scanner.nextLine();
+        String B = scanner.nextLine();
+
+        int minMoves = findMinimumMoves(A, B);
+        System.out.println(minMoves);
+    }
+
+    
+    private static int findMinimumMoves(String A, String B) {
+        int moves = 0;
+        int i = A.length() - 1;
+        int j = B.length() - 1;
+        while (i >= 0 || j >= 0) {
+            if (i < 0) {
+                moves++;
+                j--;
+            } else if (j < 0) {
+                moves++;
+                i--;
+            }else if (A.charAt(i) != B.charAt(j)) {
+                break;
+            }
+            else {
+                i--;
+                j--;
+            }
+        }
+        moves += i + 1 + j + 1;
+
+        return moves;
+    }
+}
